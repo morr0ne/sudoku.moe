@@ -1,4 +1,5 @@
-import { createMemo, Index, type Component } from 'solid-js';
+/** biome-ignore-all lint/a11y/useKeyWithClickEvents: no a11y for now */
+import { type Component, createMemo, Index } from 'solid-js';
 
 export interface GridProps {
 	cells: number[];
