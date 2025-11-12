@@ -3,8 +3,8 @@ import solidJs from '@astrojs/solid-js';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  integrations: [solidJs()],
-  vite: {
-    plugins: [tailwindcss()],
-  },
+	integrations: [solidJs()],
+	vite: {
+		plugins: [tailwindcss()],
+	},
 });
