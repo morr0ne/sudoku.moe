@@ -1,4 +1,5 @@
 ---
+import Sudoku from '@/components/Sudoku';
 import '@/styles/global.css';
 ---
 
@@ -9,7 +10,9 @@ import '@/styles/global.css';
     <meta name="viewport" content="width=device-width" />
     <title>Sudoku</title>
   </head>
-  <body>
-    <h1>sudoku</h1>
+  <body class="h-screen">
+    <div class="flex h-full items-center justify-center">
+      <Sudoku client:load />
+    </div>
   </body>
 </html>
