@@ -1,15 +1,14 @@
-import { createEffect, createSignal, type Component } from 'solid-js';
-import Grid from './Grid';
-import { emptyGrid, parseSudokuString, updateCell } from '@/utils/sudoku';
 import { useKeyDownEvent, useKeyDownList } from '@solid-primitives/keyboard';
+import { type Component, createEffect, createSignal } from 'solid-js';
+import { updateCell } from '@/utils/sudoku';
+import Grid from './Grid';
 
-const Sudoku: Component = () => {
-	const providedCells =
-		parseSudokuString(
-			'98.......7....65...5..7.96...4.8..3......78...7.3....9....5...6...6.938...2..3.7.',
-		) ?? emptyGrid();
+export type SudokuProps = {
+	providedCells: number[];
+};
 
-	const [cells, setCells] = createSignal(providedCells);
+const Sudoku: Component<SudokuProps> = (props) => {
+	const [cells, setCells] = createSignal(props.providedCells);
 	const [selectedCells, setSelectedCells] = createSignal<number[]>([]);
 
 	const keys = useKeyDownList();
@@ -32,7 +31,7 @@ const Sudoku: Component = () => {
 
 			if (!Number.isNaN(number)) {
 				selectedCells().forEach((index) => {
-					if (providedCells[index] === 0) {
+					if (props.providedCells[index] === 0) {
 						setCells((cells) => updateCell(cells, index, number));
 					}
 				});
@@ -57,7 +56,7 @@ const Sudoku: Component = () => {
 	return (
 		<Grid
 			cells={cells()}
-			providedCells={providedCells}
+			providedCells={props.providedCells}
 			selectedCells={selectedCells()}
 			onCellClicked={onCellClicked}
 		/>

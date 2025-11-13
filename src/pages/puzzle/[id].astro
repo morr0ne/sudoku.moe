@@ -1,0 +1,27 @@
+---
+/** biome-ignore-all lint/correctness/noUnusedVariables: biome bug */
+/** biome-ignore-all lint/correctness/noUnusedImports: biome bug */
+
+import Sudoku from '@/components/Sudoku';
+import { emptyGrid, parseSudokuString } from '@/utils/sudoku';
+import '@/styles/global.css';
+
+const providedCells =
+	parseSudokuString(
+		'98.......7....65...5..7.96...4.8..3......78...7.3....9....5...6...6.938...2..3.7.',
+	) ?? emptyGrid();
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+		<meta name="viewport" content="width=device-width">
+		<title>Sudoku</title>
+	</head>
+	<body class="h-screen">
+		<div class="flex h-full items-center justify-center">
+			<Sudoku providedCells={providedCells} client:load/>
+		</div>
+	</body>
+</html>
